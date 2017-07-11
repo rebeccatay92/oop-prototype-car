@@ -83,3 +83,11 @@ var dropOffOutput = honda.dropOff('Rebecca')
 assert.strictEqual(dropOffOutput, true, "If car is running and passenger exist, dropOff should return true")
 assert.strictEqual(honda.passengers.includes('Rebecca'), false, "If passenger has been dropped off, name should be removed from array")
 success()
+
+//normal: returns num of passengers left
+console.log('Testing passengerCount()')
+honda.pickUp('Friend 1')
+honda.pickUp('Friend 2')
+var passengerCountOutput = honda.passengerCount()
+assert.strictEqual(passengerCountOutput, 2, "After picking up friends 1 and 2, there should be 2 passengers")
+success()

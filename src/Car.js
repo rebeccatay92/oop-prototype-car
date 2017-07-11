@@ -69,6 +69,10 @@ class Car {
       return true
     } else return false
   }
+
+  passengerCount () {
+    return this.passengers.length
+  }
 }
 module.exports = Car
 // export the Car class //
