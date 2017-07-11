@@ -69,8 +69,15 @@ success()
 
 // normal: pickup(name) returns true if car is running, and if there are enough space (seats - 1 - passengers)
 // pickup updates passengers array with name
-console.log('Testing pickup()')
+console.log('Testing pickup(name)')
+honda.start()
 var pickUpOutput = honda.pickUp('Rebecca')
-assert.strictEqual(pickUpOutput, true, "If there is space, pickUp needs to return true")
+assert.strictEqual(pickUpOutput, true, "If there is space and car is running, pickUp needs to return true")
 assert.strictEqual(honda.passengers[honda.passengers.length - 1], 'Rebecca', "The last name in the passenger array should be name")
 success()
+
+// normal: dropOff(name) returns true if car is running, at least 1 person left to drive, passenger exists
+// removes passenger from the array
+console.log('Testing dropOff(name)')
+var dropOffOutput = honda.dropOff('Rebecca')
+assert.strictEqual(dropOffOutput, true, "If car is running and passenger exist, dropOff should return true")

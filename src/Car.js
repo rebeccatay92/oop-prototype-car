@@ -7,6 +7,7 @@ class Car {
     this.year = year
     this.color = color
     this.seats = seats
+    //passenger argument is an array of names
     this.passengers = passengers
     //if passenger argument is undefined, set it to []
     if (!this.passengers) {
@@ -54,7 +55,7 @@ class Car {
   }
 
   pickUp (name) {
-    if (this.seats - 1 - this.passengers.length > 0) {
+    if (this.running && (this.seats - this.passengers.length > 1)) {
       console.log('Driving to pick up ' + name)
       this.passengers.push(name)
       return true
