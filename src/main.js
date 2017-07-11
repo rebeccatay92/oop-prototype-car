@@ -9,7 +9,7 @@
 
 // // Step 0 - require / import the carFn file
 // var Car = require('./carFn.js')
-var Car = require('./Car.js')
+var Car = require('./Car')
 // // Step 1 - Checking all properties
 // console.log the `Car` object, does it returns all the properties requested?
 

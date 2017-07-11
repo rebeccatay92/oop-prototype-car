@@ -1,28 +1,66 @@
 // load the assert plugin (for testing)
 var assert = require('assert')
+var Car = require('../src/Car')
 var success = require('./helpers/success')
 
+// // //// TEST PHASE III /////////////////////////////////////////
+// // load the Car object for
 
-// //// TEST PHASE III /////////////////////////////////////////
-// load the Car object for
-var Car = require('../src/Car')
-// update the car instantiation below according to the test given
-var acura = new Car('Honda', 'Vuzel', 2017, 'Blue', 7)
-
-
-// starter code - testing constructor
+// // update the car instantiation below according to the test given
+var honda = new Car('Honda', 'Vuzel', 2017, 'Blue', 7)
+//
+//
+// // starter code - testing constructor
 console.log('Testing Constructor')
-assert.strictEqual(acura.make, 'Acura', 'Constructor did not set make.')
-assert.strictEqual(acura.model, 'Integra', 'Constructor did not set model.')
-assert.strictEqual(acura.year, 1999, 'Constructor did not set year.')
-assert.strictEqual(acura.color, 'Red', 'Constructor did not set color.')
-assert.strictEqual(acura.seats, 4, 'Constructor did not set seats.')
-
-// run the success function once you're done with a set of tests
+assert.strictEqual(honda.make, 'Honda', 'Constructor did not set make.')
+assert.strictEqual(honda.model, 'Vuzel', 'Constructor did not set model.')
+assert.strictEqual(honda.year, 2017, 'Constructor did not set year.')
+assert.strictEqual(honda.color, 'Blue', 'Constructor did not set color.')
+assert.strictEqual(honda.seats, 7, 'Constructor did not set seats.')
+//
+// // run the success function once you're done with a set of tests
+success()
+//
+// // test sell to non-string argument
+console.log('Testing selling a car')
+honda.sell('Lenny')
+assert.strictEqual(honda.owner, 'Lenny', 'Owner should stay if newOwner is not Lenny')
 success()
 
-// test sell
-console.log('Testing selling a car')
-acura.sell('Lenny')
+// normal case: test sell updates previousOwners
+console.log('Testing selling a car to normal string')
+honda.sell('shimei')
+var lastPrevOwner = honda.previousOwners[honda.previousOwners.length - 1]
+assert.strictEqual(lastPrevOwner, 'Lenny', 'Previous owner should be Lenny')
+success()
 
-// You're on your own from here
+// normal case: car start should set running to true
+console.log('Testing carStart()')
+honda.start()
+assert.strictEqual(honda.running, true, "After starting, running should be true")
+success()
+
+//normal case: car stop should set running to false
+console.log('testing carOff()')
+honda.off()
+assert.strictEqual(honda.running, false, "After stopping, running should be false")
+assert.ifError('')
+success()
+
+// normal case: drive to destination should console.log only if running is true
+// else fn returns false
+console.log('testing driveTo(destination)')
+honda.start()
+var driveOutput = honda.driveTo('Lalaland')
+assert.ok(driveOutput, "driveTo should be able to return true")
+success()
+
+// normal case: if running is false, park should console.log('parked!!') and return true
+console.log('Testing park()')
+honda.off()
+var parkOutput = honda.park()
+assert.strictEqual(parkOutput, true, 'Park should return true')
+success()
+
+// normal: passengers should exist and should be empty array by default
+// passenger
