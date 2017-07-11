@@ -76,8 +76,10 @@ assert.strictEqual(pickUpOutput, true, "If there is space and car is running, pi
 assert.strictEqual(honda.passengers[honda.passengers.length - 1], 'Rebecca', "The last name in the passenger array should be name")
 success()
 
-// normal: dropOff(name) returns true if car is running, at least 1 person left to drive, passenger exists
+// normal: dropOff(name) returns true if car is running and passenger exists
 // removes passenger from the array
 console.log('Testing dropOff(name)')
 var dropOffOutput = honda.dropOff('Rebecca')
 assert.strictEqual(dropOffOutput, true, "If car is running and passenger exist, dropOff should return true")
+assert.strictEqual(honda.passengers.includes('Rebecca'), false, "If passenger has been dropped off, name should be removed from array")
+success()

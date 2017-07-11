@@ -61,6 +61,14 @@ class Car {
       return true
     } else return false
   }
+
+  dropOff (name) {
+    if (this.running && this.passengers.includes(name)) {
+      console.log('Driving to drop off ' + name)
+      this.passengers.splice(this.passengers.indexOf(name), 1)
+      return true
+    } else return false
+  }
 }
 module.exports = Car
 // export the Car class //
