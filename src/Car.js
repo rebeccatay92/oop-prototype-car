@@ -1,12 +1,17 @@
 // Phase II here, don't require this file until you're done with Phase I
 
 class Car {
-  constructor (make, model, year, color, seats) {
+  constructor (make, model, year, color, seats, passengers) {
     this.make = make
     this.model = model
     this.year = year
     this.color = color
     this.seats = seats
+    this.passengers = passengers
+    //if passenger argument is undefined, set it to []
+    if (!this.passengers) {
+      this.passengers = []
+    }
     this.previousOwners = []
     this.owner = 'manufacturer'
     this.running = false
@@ -48,6 +53,13 @@ class Car {
     } else return false
   }
 
+  pickUp (name) {
+    if (this.seats - 1 - this.passengers.length > 0) {
+      console.log('Driving to pick up ' + name)
+      this.passengers.push(name)
+      return true
+    } else return false
+  }
 }
 module.exports = Car
 // export the Car class //

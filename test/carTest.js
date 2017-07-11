@@ -63,4 +63,14 @@ assert.strictEqual(parkOutput, true, 'Park should return true')
 success()
 
 // normal: passengers should exist and should be empty array by default
-// passenger
+console.log('Testing optional passenger argument')
+assert.strictEqual(honda.passengers.length, 0, "There should be an empty array if passenger argument is not included")
+success()
+
+// normal: pickup(name) returns true if car is running, and if there are enough space (seats - 1 - passengers)
+// pickup updates passengers array with name
+console.log('Testing pickup()')
+var pickUpOutput = honda.pickUp('Rebecca')
+assert.strictEqual(pickUpOutput, true, "If there is space, pickUp needs to return true")
+assert.strictEqual(honda.passengers[honda.passengers.length - 1], 'Rebecca', "The last name in the passenger array should be name")
+success()
