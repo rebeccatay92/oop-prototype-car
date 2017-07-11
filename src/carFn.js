@@ -10,13 +10,15 @@ var Car = {
   previousOwners: [],
   owner: 'manufacturer',
   running: false,
-  sell (name) {
+  sell: function (name) {
     this.previousOwners.push(this.owner)
     this.owner = name
   },
-  paint (newColor) {
+  paint: function (newColor) {
     this.color = newColor
   }
 } // close object
 
 // Export the `Car` object
+
+module.exports = Car
