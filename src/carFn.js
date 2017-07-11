@@ -10,6 +10,7 @@ var Car = {
   previousOwners: [],
   owner: 'manufacturer',
   running: false,
+  //static method
   sell: function (name) {
     this.previousOwners.push(this.owner)
     this.owner = name
