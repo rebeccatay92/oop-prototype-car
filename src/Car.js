@@ -16,7 +16,6 @@ class Car {
     this.previousOwners = []
     this.owner = 'manufacturer'
     this.running = false
-    // TODO: add color, seats here
   }
   // add the sell function
   // instance methods. not owned by constructor/clss
@@ -55,7 +54,7 @@ class Car {
   }
 
   pickUp (name) {
-    if (this.running && (this.seats - this.passengers.length > 1)) {
+    if (this.running && isNaN(name) && (this.seats - this.passengers.length > 1)) {
       console.log('Driving to pick up ' + name)
       this.passengers.push(name)
       return true
@@ -63,7 +62,7 @@ class Car {
   }
 
   dropOff (name) {
-    if (this.running && this.passengers.includes(name)) {
+    if (this.running && isNaN(name) && this.passengers.includes(name)) {
       console.log('Driving to drop off ' + name)
       this.passengers.splice(this.passengers.indexOf(name), 1)
       return true
